@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import creuseLogo from "../assets/creuse-logo.png";
 
 const Header = ({ onSignUpClick, onLoginClick }) => {
   return (
@@ -11,7 +12,7 @@ const Header = ({ onSignUpClick, onLoginClick }) => {
       </nav>
       <div className="header_container">
         <div className="logo_container">
-          <img src="./src/assets/creuse-logo.png" alt="Ciné La Creuse Logo" />
+          <img src={creuseLogo} alt="Ciné La Creuse Logo" />
           <div className="cine_name_container">
             <h1>Ciné</h1>
             <h1>La Creuse</h1>
