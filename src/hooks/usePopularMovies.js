@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const useMovies = () => {
+const usePopularMovies = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -26,4 +26,4 @@ const useMovies = () => {
   return movies;
 };
 
-export default useMovies;
+export default usePopularMovies;
