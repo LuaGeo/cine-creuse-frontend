@@ -210,7 +210,6 @@ h2 {
   width: 100px; /* Adjust the width of the fading area */
   height: 100%;
   background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
-  pointer-events: none; /* Allows clicks to pass through */
 }
 
 .carousel-item {
@@ -281,4 +280,25 @@ footer {
   padding: 20px;
   background-color: #16181d;
   color: white;
+}
+
+/* ////// MOVIE DETAILS PAGE ////// */
+
+h4 {
+  color: #f9f9f9;
+  font-size: 20px;
+  font-weight: 800;
+  margin-top: 30px;
+}
+
+.movie-details {
+  display: flex;
+  gap: 20px;
+}
+
+.movie-details img {
+  width: 300px;
+}
+.overview {
+  color: #f9f9f9;
 }

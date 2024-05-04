@@ -1,4 +1,5 @@
 import useMovieRecommendations from "../hooks/useMovieRecommendations.js";
+import { Link } from "react-router-dom";
 
 const CarouselRecommendations = ({ movieId }) => {
   const recommendations = useMovieRecommendations(movieId);
@@ -8,13 +9,17 @@ const CarouselRecommendations = ({ movieId }) => {
       <div className="carousel">
         {recommendations.length > 0 ? (
           recommendations.map((movie) => (
-            <div key={movie.id} className="carousel-item">
-              <img
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                alt={movie.title}
-              />
-              <h3>{movie.title}</h3>
-            </div>
+            <>
+              <Link to={`/movie/${movie.id}`}>
+                <div key={movie.id} className="carousel-item">
+                  <img
+                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                    alt={movie.title}
+                  />
+                  <h3>{movie.title}</h3>
+                </div>
+              </Link>
+            </>
           ))
         ) : (
           <p>No recommendations available.</p>

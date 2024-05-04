@@ -2,6 +2,7 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import FavoritesPage from "./pages/FavoritesPage";
+import MovieDetails from "./pages/MovieDetails";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Login from "./components/Login";
@@ -36,6 +37,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/favorites" element={<FavoritesPage />} />
+            <Route path="/movie/:movieId" element={<MovieDetails />} />
           </Routes>
         </main>
         <Footer />
