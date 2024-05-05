@@ -1,13 +1,18 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { useState } from "react";
+
+/* ----- PAGES ----- */
 import HomePage from "./pages/HomePage";
 import FavoritesPage from "./pages/FavoritesPage";
 import MovieDetails from "./pages/MovieDetails";
+import GenreMoviesPage from "./pages/GenreMoviesPage";
+
+/* ----- COMPONENTS ----- */
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
-import { useState } from "react";
 
 function App() {
   console.log("Rendering App");
@@ -38,6 +43,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/favorites" element={<FavoritesPage />} />
             <Route path="/movie/:movieId" element={<MovieDetails />} />
+            <Route path="/genre/:genreId" element={<GenreMoviesPage />} />
           </Routes>
         </main>
         <Footer />

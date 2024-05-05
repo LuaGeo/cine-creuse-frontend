@@ -1,5 +1,6 @@
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Link } from "react-router-dom";
 
 const SplashImages = ({ movies }) => {
   return (
@@ -19,7 +20,9 @@ const SplashImages = ({ movies }) => {
             alt={movie.title}
           />
           <button>+ Favoris</button>
-          <button>Infos...</button>
+          <Link to={`/movie/${movie.id}`}>
+            <button>Infos...</button>
+          </Link>
         </div>
       ))}
     </Carousel>

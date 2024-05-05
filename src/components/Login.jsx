@@ -2,7 +2,7 @@ const Login = ({ isVisible, onClose }) => {
   if (!isVisible) return null;
 
   return (
-    <div className="modal">
+    <div className="modal" onClick={onClose}>
       <div className="modal-content">
         <span className="close" onClick={onClose}>
           &times;

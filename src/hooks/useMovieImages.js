@@ -1,4 +1,41 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
+
+const useMovieImages = (movieId) => {
+  const [images, setImages] = useState([]);
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      if (!movieId) return; // Avoid fetching if no movieId is provided
+
+      const url = `https://api.themoviedb.org/3/movie/${movieId}/images`;
+      const bearerToken = import.meta.env.VITE_TOKEN;
+
+      try {
+        const response = await axios.get(url, {
+          headers: {
+            accept: "application/json",
+            Authorization: `Bearer ${bearerToken}`,
+          },
+        });
+        console.log("Data fetched:", response.data);
+        setImages(response.data.backdrops);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchImages();
+  }, [movieId]);
+
+  return images;
+};
+
+export default useMovieImages;
+
+/* Method suggested in API documentation (usinf fetch instead of axios ): 
+
+import { useState, useEffect } from "react";
 
 const useMovieImages = (movieId) => {
   const [images, setImages] = useState([]);
@@ -35,4 +72,4 @@ const useMovieImages = (movieId) => {
   return images;
 };
 
-export default useMovieImages;
+export default useMovieImages; */

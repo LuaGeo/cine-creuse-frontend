@@ -2,6 +2,7 @@
   max-width: 100vw;
   background-color: #000;
   font-family: "Lato", "Helvetica Neue", "Arial";
+  box-sizing: border-box;
 }
 
 .container {
@@ -9,10 +10,12 @@
   margin: 0 auto; /* This centers the container */
   position: relative; /* Needed for absolute positioning inside */
   padding: 20px;
+  box-sizing: border-box;
 }
 
 body {
   background-color: #000;
+  box-sizing: border-box;
 }
 
 header {
@@ -61,19 +64,40 @@ header img {
 
 .searchbar {
   display: flex;
+  flex-direction: column;
   width: 60%;
   align-items: center;
   position: relative;
 }
 
+.results-dropdown {
+  position: absolute;
+  top: 100%; /* Aligns the top of the dropdown right below the input */
+  left: 0;
+  border: 1px solid #ccc;
+  z-index: 1000; /* Ensures the dropdown appears above other content */
+  max-height: 300px; /* Limit the height of the dropdown */
+  overflow-y: auto; /* Allows scrolling inside the dropdown */
+  list-style: none;
+  color: #212020;
+  margin-top: 0;
+  background: rgba(255, 255, 255, 0.557);
+  width: 300px;
+}
+
+.results-dropdown li.selected {
+  background-color: #f0f0f0; /* Light grey background for the selected item */
+}
+
 .searchbar input {
   width: 100%;
-  padding: 10px 10px 10px 35px; /* Adjust padding to make space for the icon inside the input */
+  padding: 10px; /* Adjust padding to make space for the icon inside the input */
+  padding-left: 40px;
   border-radius: 20px;
   border: none;
   background-color: #333;
   color: white;
-  position: relative;
+  box-sizing: border-box;
 }
 
 .search_icon {
@@ -85,6 +109,16 @@ header img {
   ); /* Ensures the icon is perfectly centered no matter the input height */
   color: white;
   pointer-events: none; /* Makes the icon non-interactive */
+}
+
+.searchbar li {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.searchbar li:hover {
+  background-color: #f0f0f0;
+  color: #20232a;
 }
 
 .buttons_container {
@@ -241,6 +275,24 @@ h3 {
   width: 20%;
 }
 
+.right-area button {
+}
+
+.movie-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.movie-card {
+  width: 200px;
+}
+
+.movie-card img {
+  width: 100%;
+}
+
 .modal {
   position: fixed;
   z-index: 1;
@@ -275,13 +327,6 @@ h3 {
   cursor: pointer;
 }
 
-footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #16181d;
-  color: white;
-}
-
 /* ////// MOVIE DETAILS PAGE ////// */
 
 h4 {
@@ -301,4 +346,11 @@ h4 {
 }
 .overview {
   color: #f9f9f9;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #090a0c;
+  color: white;
 }
