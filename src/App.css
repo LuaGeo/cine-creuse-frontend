@@ -452,9 +452,14 @@ footer {
     width: 100%;
   }
 
+  .header_container,
+  .main-container {
+    width: 100vw;
+  }
+
   .logo_container,
   .buttons_container {
-    width: 100%;
+    width: 20%;
   }
 
   .carousel-item {
