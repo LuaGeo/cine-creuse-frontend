@@ -1,22 +1,38 @@
-#root {
-  max-width: 100vw;
-  background-color: #000;
-  font-family: "Lato", "Helvetica Neue", "Arial";
+/* ////////////////////////////////////////////// GLOBAL STYLES ////////////////////////////////////////////// */
+
+html {
   box-sizing: border-box;
 }
 
-.container {
-  max-width: 100vw;
-  margin: 0 auto; /* This centers the container */
-  position: relative; /* Needed for absolute positioning inside */
-  padding: 20px;
-  box-sizing: border-box;
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
 body {
   background-color: #000;
+  font-family: "Lato", "Helvetica Neue", "Arial";
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* ////////////////////////////////////////////// CONTAINER ////////////////////////////////////////////// */
+
+.container {
+  max-width: 100vw;
+  margin: 0 auto;
+  position: relative;
+  padding: 20px;
   box-sizing: border-box;
 }
+
+/* ////////////////////////////////////////////// HEADER ////////////////////////////////////////////// */
 
 header {
   justify-content: space-between;
@@ -147,18 +163,20 @@ button {
   font-size: 1rem;
 }
 
-/* ----- MAIN ----- */
+/* ////////////////////////////////////////////// MAIN LAYOUT ////////////////////////////////////////////// */
 
 .main-container {
   display: flex;
   gap: 20px;
 }
 
+/*  LEFT CONTENT  */
+
 .left-sidebar {
   width: 20%;
 }
 
-/* ////// CENTER CONTAINER ////// */
+/*  CENTER CONTENT  */
 
 .center-content {
   width: 60%;
@@ -274,7 +292,7 @@ h3 {
   font-weight: 800;
 }
 
-/* ////// RIGHT CONTAINER ////// */
+/*  RIGHT CONTENT  */
 
 .right-area {
   display: flex;
@@ -306,6 +324,8 @@ button:hover {
   background-color: #f8b319;
   color: #000;
 }
+
+/* ////////////////////////////////////////////// MODALS LAYOUT ////////////////////////////////////////////// */
 
 .modal {
   position: fixed;
@@ -366,7 +386,7 @@ form > input {
   cursor: pointer;
 }
 
-/* ////// MOVIE DETAILS PAGE ////// */
+/* ////////////////////////////////////////////// MOVIE DETAILS PAGES ////////////////////////////////////////////// */
 
 h4 {
   color: #f9f9f9;
@@ -386,6 +406,8 @@ h4 {
 .overview {
   color: #f9f9f9;
 }
+
+/* ////////////////////////////////////////////// GENRE PAGES ////////////////////////////////////////////// */
 
 .genre-pages {
   display: flex;
@@ -412,9 +434,57 @@ h4 {
   width: 100%;
 }
 
+/* ////////////////////////////////////////////// FOOTER ////////////////////////////////////////////// */
+
 footer {
   text-align: center;
   padding: 10px;
   background-color: #090a0c;
   color: white;
+}
+
+/* ////////////////////////////////////////////// MEDIA QUERIES ////////////////////////////////////////////// */
+
+@media (max-width: 768px) {
+  .left-sidebar,
+  .center-content,
+  .right-area {
+    width: 100%;
+  }
+
+  .header_container,
+  .main-container {
+    flex-wrap: wrap;
+  }
+
+  .logo_container,
+  .buttons_container {
+    width: 100%;
+  }
+
+  .carousel-item {
+    width: 100px;
+  }
+
+  .movie-card {
+    width: 150px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    width: 95%;
+  }
+
+  .left-sidebar {
+    width: 25%;
+  }
+
+  .center-content {
+    width: 50%;
+  }
+
+  .right-area {
+    width: 25%;
+  }
 }
