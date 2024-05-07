@@ -1,6 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useState } from "react";
+import Cookies from "js-cookie";
 
 /* ----- PAGES ----- */
 import HomePage from "./pages/HomePage";
@@ -31,12 +32,41 @@ function App() {
     setSignUpVisible(true);
     setLoginVisible(false);
   };
+
+  const [token, setToken] = useState(Cookies.get("token") || null);
+  const [username, setUsername] = useState(Cookies.get("username") || null);
+
+  const [visible, setVisible] = useState(false);
+  const [visibleLogin, setVisibleLogin] = useState(false);
+
+  const handleUserData = (userData) => {
+    if (userData && userData.token && userData.username) {
+      setToken(userData.token);
+      setUsername(userData.username);
+      Cookies.set("token", userData.token, { expires: 7 });
+      Cookies.set("username", userData.username, { expires: 7 });
+    } else {
+      setToken(null);
+      setUsername(null);
+      Cookies.remove("token");
+      Cookies.remove("username");
+    }
+  };
+
   return (
     <Router>
       <div>
         <Header
           onLoginClick={handleLoginOpen}
           onSignUpClick={handleSignUpOpen}
+          setVisible={setVisible}
+          visible={visible}
+          setVisibleLogin={setVisibleLogin}
+          visibleLogin={visibleLogin}
+          handleUserData={handleUserData}
+          token={token}
+          username={username}
+          setUsername={setUsername}
         />
         <main>
           <Routes>
@@ -47,8 +77,16 @@ function App() {
           </Routes>
         </main>
         <Footer />
-        <Login isVisible={isLoginVisible} onClose={handleLoginClose} />
-        <SignUp isVisible={isSignUpVisible} onClose={handleSignUpClose} />
+        <Login
+          isVisible={isLoginVisible}
+          onClose={handleLoginClose}
+          onUserLogin={handleUserData}
+        />
+        <SignUp
+          isVisible={isSignUpVisible}
+          onClose={handleSignUpClose}
+          onLoginClick={handleLoginOpen}
+        />
       </div>
     </Router>
   );

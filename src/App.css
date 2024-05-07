@@ -129,6 +129,10 @@ header img {
   gap: 10px;
 }
 
+.user_icon {
+  color: #f8b319;
+}
+
 button {
   background-color: #f8b319;
   border: none;
@@ -216,6 +220,7 @@ h2 {
   font-size: 24px;
   font-weight: 600;
   margin-top: 30px;
+  margin-left: 50px;
 }
 
 .carousel-wrapper {
@@ -272,25 +277,34 @@ h3 {
 /* ////// RIGHT CONTAINER ////// */
 
 .right-area {
-  width: 20%;
-}
-
-.right-area button {
-}
-
-.movie-cards-container {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  width: 20%;
   gap: 20px;
+}
+
+.buttons-container {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 10px;
   justify-content: center;
 }
 
-.movie-card {
-  width: 200px;
+.buttons-container > button {
+  width: 100px;
+  height: 50px;
+  background-color: #000;
+  border: 1px solid #f8b319;
+  border-radius: 5px;
+  padding: 10px 10px;
+  color: #f8b319;
+  cursor: pointer;
 }
 
-.movie-card img {
-  width: 100%;
+button:hover {
+  background-color: #f8b319;
+  color: #000;
 }
 
 .modal {
@@ -301,20 +315,45 @@ h3 {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(252, 252, 252, 0.254);
 }
 
 .modal-content {
-  background-color: #fefefe;
+  background-color: #fefefed9;
   margin: 15% auto;
-  padding: 20px;
+  padding: 50px;
   border: 1px solid #888;
   width: 80%;
   max-width: 500px;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+form > input {
+  height: 30px;
+}
+
+.modal-content p {
+  margin-top: 20px;
+}
+
+.span-connect {
+  color: #f8b319;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.span-connect:hover {
+  color: #000;
+}
+
 .close {
-  color: #aaa;
+  color: #787878;
   float: right;
   font-size: 28px;
   font-weight: bold;
@@ -346,6 +385,31 @@ h4 {
 }
 .overview {
   color: #f9f9f9;
+}
+
+.genre-pages {
+  display: flex;
+  width: 100vw;
+  padding: 20px 50px;
+  box-sizing: border-box;
+  justify-content: flex-end;
+  gap: 100px;
+}
+
+.movie-cards-container {
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.movie-card {
+  width: 200px;
+}
+
+.movie-card img {
+  width: 100%;
 }
 
 footer {

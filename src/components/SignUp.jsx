@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const SignUp = ({ isVisible, onClose }) => {
+const SignUp = ({ isVisible, onClose, onLoginClick }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -31,7 +31,7 @@ const SignUp = ({ isVisible, onClose }) => {
   };
 
   return (
-    <div className="modal" onClick={(e) => e.stopPropagation()}>
+    <div className="modal" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <span className="close" onClick={onClose}>
           &times;
@@ -59,7 +59,10 @@ const SignUp = ({ isVisible, onClose }) => {
           <button type="submit">S'inscrire</button>
         </form>
         <p>
-          Tu as déjà un compte ? <span onClick={onClose}>Connecte-toi</span>
+          Tu as déjà un compte ?{" "}
+          <span onClick={onLoginClick} className="span-connect">
+            Connecte-toi
+          </span>
         </p>
       </div>
     </div>
