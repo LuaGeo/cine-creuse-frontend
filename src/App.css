@@ -452,11 +452,6 @@ footer {
     width: 100%;
   }
 
-  .header_container,
-  .main-container {
-    flex-wrap: wrap;
-  }
-
   .logo_container,
   .buttons_container {
     width: 100%;
