@@ -26,7 +26,9 @@ const MovieDetails = () => {
         />
         <div>
           <h2>{movie.title}</h2>
-          <p className="overview">{movie.overview}</p>
+          <div className="overview">
+            <p>{movie.overview}</p>
+          </div>
         </div>
       </div>
       <h4>Recommendations</h4>

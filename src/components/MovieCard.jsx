@@ -1,17 +1,55 @@
 // src/components/MovieCard.jsx
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faStar as fullStar,
+  faStarHalfAlt,
+  faStar as emptyStar,
+} from "@fortawesome/free-solid-svg-icons";
+import calculateStars from "../hooks/calculateStars";
 
 const MovieCard = ({ movie }) => {
+  const { fullStars, halfStar, emptyStars } = calculateStars(
+    movie.vote_average
+  );
+
   return (
-    <div className="movie-card">
-      <Link to={`/movie/${movie.id}`}>
+    <Link to={`/movie/${movie.id}`}>
+      <div key={movie.id} className="carousel-item">
         <img
           src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
           alt={movie.title}
         />
-      </Link>
-      <h5>{movie.title}</h5>
-    </div>
+        <div className="details-movie-card-container">
+          <div>
+            <h3>{movie.title}</h3>
+            <div className="stars-container">
+              {Array.from({ length: fullStars }).map((_, idx) => (
+                <FontAwesomeIcon
+                  key={`full-${idx}`}
+                  icon={fullStar}
+                  className="text-gold"
+                />
+              ))}
+              {halfStar > 0 && (
+                <FontAwesomeIcon icon={faStarHalfAlt} className="text-gold" />
+              )}
+              {Array.from({ length: emptyStars }).map((_, idx) => (
+                <FontAwesomeIcon
+                  key={`empty-${idx}`}
+                  icon={emptyStar}
+                  className="text-muted"
+                />
+              ))}
+            </div>
+          </div>
+          <div className="bottom-movie-card">
+            <button>+</button>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </Link>
   );
 };
 

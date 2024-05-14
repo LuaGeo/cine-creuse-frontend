@@ -1,24 +1,35 @@
-import useMovieImages from "../hooks/useMovieImages";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import MovieCard from "../components/MovieCard";
+// import Cookies from "js-cookie";
 
 const FavoritesPage = () => {
-  const movieId = 80;
-  const images = useMovieImages(movieId);
+  const [favorites, setFavorites] = useState([]);
+
+  useEffect(() => {
+    const fetchFavorites = async () => {
+      try {
+        const token = Cookies.get("token"); // Ensure you are importing Cookies
+        const response = await axios.get("/favorites", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        setFavorites(response.data);
+      } catch (error) {
+        console.error("Failed to fetch favorites:", error);
+      }
+    };
+
+    fetchFavorites();
+  }, []);
 
   return (
     <div>
-      <h1>Favorites Page</h1>
+      <h1>Favorites</h1>
       <div>
-        {images.length > 0 ? (
-          images.map((image, index) => (
-            <div key={index}>
-              <img
-                src={`https://image.tmdb.org/t/p/w500${image.file_path}`}
-                alt="Movie Image"
-              />
-            </div>
-          ))
+        {favorites.length > 0 ? (
+          favorites.map((movie) => <MovieCard key={movie.id} movie={movie} />)
         ) : (
-          <p>No images found</p>
+          <p>No favorite movies found.</p>
         )}
       </div>
     </div>

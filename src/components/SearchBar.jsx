@@ -49,9 +49,17 @@ const SearchBar = () => {
   };
 
   const handleResultClick = (movieId) => {
+    console.log("Clicked movie ID:", movieId);
     setResults([]);
     navigate(`/movie/${movieId}`);
     setQuery("");
+  };
+
+  const handleBlur = () => {
+    // Delay hiding results to allow click event to process
+    setTimeout(() => {
+      setIsFocused(false);
+    }, 300);
   };
 
   return (
@@ -62,7 +70,8 @@ const SearchBar = () => {
         value={query}
         onChange={handleSearchChange}
         onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
+        onBlur={handleBlur}
+        // onBlur={() => setIsFocused(false)}
         onKeyDown={handleKeyDown}
       />
       {results.length > 0 && isFocused && (

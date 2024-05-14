@@ -3,6 +3,9 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Link } from "react-router-dom";
 
 const SplashImages = ({ movies }) => {
+  if (!movies || movies.length === 0) {
+    return <div>Loading...</div>; // Or any other loading indicator
+  }
   return (
     <Carousel
       infiniteLoop={true}

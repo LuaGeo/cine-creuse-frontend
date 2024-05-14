@@ -15,9 +15,9 @@ const HomePage = () => {
         <div className="center-content">
           <div className="splash-container">
             <SplashImages movies={topThreeMovies} />
-            <h2>Recommendations</h2>
-            <CarouselRecommendations movieId={firstMovieId} />
           </div>
+          <h2>Recommendations</h2>
+          <CarouselRecommendations movieId={firstMovieId} />
         </div>
         <GenreButtons />
       </div>
