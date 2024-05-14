@@ -7,8 +7,20 @@ import {
   faStar as emptyStar,
 } from "@fortawesome/free-solid-svg-icons";
 import calculateStars from "../hooks/calculateStars";
+import useMovieGenres from "../hooks/useMovieGenres";
 
 const MovieCard = ({ movie }) => {
+  const genres = useMovieGenres();
+
+  const getGenreNames = (genreIds) => {
+    return genres
+      .filter((genre) => genreIds.includes(genre.id))
+      .map((genre) => genre.name)
+      .join(", ");
+  };
+
+  const genreNames = getGenreNames(movie.genre_ids);
+
   const { fullStars, halfStar, emptyStars } = calculateStars(
     movie.vote_average
   );
@@ -45,7 +57,7 @@ const MovieCard = ({ movie }) => {
           </div>
           <div className="bottom-movie-card">
             <button>+</button>
-            <span></span>
+            <p>{genreNames}</p>
           </div>
         </div>
       </div>

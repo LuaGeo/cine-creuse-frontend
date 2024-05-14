@@ -307,6 +307,7 @@ h2 {
   position: absolute;
   width: 100%; /* Ensure it spans the width of the carousel-item */
   padding: 20px; /* Side padding */
+  padding-bottom: 15px;
 }
 
 .stars-container {
@@ -337,6 +338,8 @@ h3 {
 .bottom-movie-card {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  justify-items: center;
 }
 
 .bottom-movie-card > button {
@@ -349,11 +352,16 @@ h3 {
   line-height: 15px;
 }
 
-.bottom-movie-card > span {
-  background-color: #cccccc5e;
-  width: 50px;
+.bottom-movie-card > p {
+  display: flex;
+  justify-content: right;
+  align-items: end;
+  color: #e7e7e7;
+  text-align: right;
+  font-size: 12px;
+  font-weight: bold;
+  width: 100px;
   height: 32px;
-  border: #e90505 solid 1px;
 }
 
 /*  RIGHT CONTENT  */

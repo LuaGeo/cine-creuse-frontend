@@ -10,7 +10,7 @@ const SplashImages = ({ movies }) => {
     <Carousel
       infiniteLoop={true}
       autoPlay={true}
-      interval={5000}
+      interval={4000}
       emulateTouch={true}
       showStatus={false}
       showThumbs={false}
